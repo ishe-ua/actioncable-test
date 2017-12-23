@@ -17,3 +17,9 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore documentation
+/doc/*
+
+# Ignore app assets
+/public/assets
