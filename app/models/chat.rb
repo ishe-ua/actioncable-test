@@ -21,4 +21,12 @@ class Chat < ApplicationRecord
 
   validates :a_id, presence: true, uniqueness: { scope: :b_id }
   validates :b_id, presence: true
+
+  # TODO: a_id < b_id validation
+
+  # include Pair
+  # include Log
+
+  # def self.say(who_id, whom_id, text)
+  # end
 end
