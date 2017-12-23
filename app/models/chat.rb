@@ -20,6 +20,11 @@ class Chat < ApplicationRecord
   include Pair
   include Log
 
-  # def self.say(who_id, whom_id, text)
-  # end
+  def self.say(who_id, whom_id, text)
+    a_id = [who_id, whom_id].min
+    b_id = [who_id, whom_id].max
+
+    msg = { who: who_id, whom: whom_id, text: text, date: Time.zone.now }
+    # TODO: exec_sql('select')
+  end
 end

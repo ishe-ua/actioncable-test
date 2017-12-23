@@ -13,8 +13,6 @@ class LogTest < ActiveSupport::TestCase
 
   test 'not nil' do
     instance.log = nil
-    assert_raise do
-      instance.save!
-    end
+    assert_raise { instance.save! }
   end
 end
