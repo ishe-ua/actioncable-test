@@ -1,6 +1,6 @@
 DEFAULTS: &DEFAULTS
-  a_id: 1
-  b_id: 2
+  a_id: 10
+  b_id: 20
 
 bill_with_marry:
   <<: *DEFAULTS

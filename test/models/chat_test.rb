@@ -3,7 +3,10 @@
 require 'test_helper'
 
 class ChatTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @instance = build(:chat)
+  end
+
+  include ValidateInstanceTest
+  include ValidateFixturesTest
 end
