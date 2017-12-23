@@ -8,17 +8,26 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get create - success' do
-    post sessions_path(name: 'user')
+  test 'should sign in if user exists' do
+    post sessions_path(name: 'mary')
 
-    assert_equal cookies[:name], 'user'
+    assert_equal cookies[:user_id].to_i, users(:mary).id
     assert_redirected_to chats_path
   end
 
-  test 'should get create - fail' do
+  test 'should create user and sign in if user do not exists' do
+    assert_difference 'User.count' do
+      post sessions_path(name: 'mary2')
+    end
+
+    assert_not_nil cookies[:user_id]
+    assert_redirected_to chats_path
+  end
+
+  test 'should redirect to new if empty user' do
     post sessions_path(name: '')
 
-    assert_nil cookies[:name]
+    assert_nil cookies[:user_id]
     assert_redirected_to new_session_path
   end
 end
