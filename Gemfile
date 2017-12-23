@@ -45,3 +45,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'bourbon', '5.0.0.beta8'
+gem 'bitters'
+gem 'neat'
