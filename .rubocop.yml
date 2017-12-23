@@ -19,8 +19,6 @@ BlockLength:
 
 ClassAndModuleChildren:
   Enabled: false
-  # Exclude:
-  #   - test/test_helper.rb
 
 Documentation:
   Exclude:
