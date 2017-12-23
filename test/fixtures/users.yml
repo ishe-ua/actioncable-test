@@ -1,0 +1,8 @@
+DEFAULTS: &DEFAULTS
+  name: $LABEL
+
+mary:
+  <<: *DEFAULTS
+
+john:
+  <<: *DEFAULTS
