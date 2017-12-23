@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: chats
@@ -7,7 +6,7 @@
 #  id         :integer          not null, primary key
 #  a_id       :integer          not null
 #  b_id       :integer          not null
-#  log        :text
+#  text       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

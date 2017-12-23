@@ -7,7 +7,7 @@ class CreateChats < ActiveRecord::Migration[5.1]
       t.integer :a_id, null: false
       t.integer :b_id, null: false
 
-      t.text :log
+      t.text :text
       t.timestamps
     end
 
