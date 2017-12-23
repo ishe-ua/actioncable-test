@@ -29,5 +29,8 @@ module ActioncableTest
       g.assets false # stylesheets, js
       g.helper false # helpers
     end
+
+    # See db/sql folder
+    config.active_record.schema_format = :sql
   end
 end
