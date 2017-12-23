@@ -18,11 +18,4 @@ class ActiveRecord::Migration
 
     ActiveRecord::Base.connection.execute(query)
   end
-
-  alias create_index exec_sql
-
-  def drop_index(query)
-    q = 'DROP INDEX ' + query
-    ActiveRecord::Base.connection.execute(q)
-  end
 end

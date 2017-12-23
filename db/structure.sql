@@ -22,6 +22,41 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: say(integer, integer, text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION say(integer, integer, text) RETURNS integer
+    LANGUAGE plpgsql
+    AS $_$
+
+DECLARE
+
+        chat_id integer;
+
+BEGIN
+
+        SELECT id INTO chat_id FROM chats WHERE a_id=$1 AND b_id=$2;
+
+        IF chat_id > 0 THEN
+
+           UPDATE chats SET log=array_append(log, $3), updated_at=now() where id=chat_id;
+
+        ELSE
+
+           INSERT INTO chats (a_id, b_id, log, created_at, updated_at) values ($1, $2, array[$3], now(), now());
+
+        END IF;
+
+
+
+        RETURN 1;
+
+END;
+
+$_$;
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -179,6 +214,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20171223123809'),
-('20171223143323');
+('20171223143323'),
+('20171223202527');
 
 

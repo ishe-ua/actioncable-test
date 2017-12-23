@@ -15,18 +15,15 @@
 #
 #  index_chats_on_a_id_and_b_id  (a_id,b_id) UNIQUE
 #
-
 class Chat < ApplicationRecord
   include Pair
   include Log
 
   def self.say(who_id, whom_id, text)
-    raise if a_id == b_id
-
     a_id = [who_id, whom_id].min
     b_id = [who_id, whom_id].max
 
-    msg = { who: a_id, whom: b_id, text: text, date: Time.zone.now }
-    msg # TODO: exec plsql function
+    msg = { who: who_id, whom: whom_id, text: text, date: Time.zone.now }
+    find_by_sql('select say(?, ?, ?)', a_id, b_id, msg)
   end
 end
