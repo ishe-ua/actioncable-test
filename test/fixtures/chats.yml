@@ -1,6 +1,7 @@
 DEFAULTS: &DEFAULTS
   a_id: <%= ActiveRecord::FixtureSet.identify(:bill)  %>
   b_id: <%= ActiveRecord::FixtureSet.identify(:john)  %>
+  log:  <%= Chat.new.log %>
 
 bill_with_marry:
   <<: *DEFAULTS

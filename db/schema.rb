@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20171223143323) do
   create_table "chats", force: :cascade do |t|
     t.integer "a_id", null: false
     t.integer "b_id", null: false
-    t.text "text"
+    t.text "log", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["a_id", "b_id"], name: "index_chats_on_a_id_and_b_id", unique: true
