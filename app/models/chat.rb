@@ -21,10 +21,12 @@ class Chat < ApplicationRecord
   include Log
 
   def self.say(who_id, whom_id, text)
+    raise if a_id == b_id
+
     a_id = [who_id, whom_id].min
     b_id = [who_id, whom_id].max
 
-    msg = { who: who_id, whom: whom_id, text: text, date: Time.zone.now }
-    # TODO: exec_sql('select')
+    msg = { who: a_id, whom: b_id, text: text, date: Time.zone.now }
+    msg # TODO: exec plsql function
   end
 end
