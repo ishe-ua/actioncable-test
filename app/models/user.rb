@@ -13,7 +13,6 @@
 #
 #  index_users_on_name  (name) UNIQUE
 #
-
 class User < ApplicationRecord
   validates :name,
             presence: true,

@@ -1,6 +1,9 @@
 DEFAULTS: &DEFAULTS
   name: $LABEL
 
+bill:
+  <<: *DEFAULTS
+
 mary:
   <<: *DEFAULTS
 
