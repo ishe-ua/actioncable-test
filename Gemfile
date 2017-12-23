@@ -49,3 +49,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bourbon', '5.0.0.beta8'
 gem 'bitters'
 gem 'neat'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-normalize-css', '~> 7.0.0'
+  gem 'rails-assets-zepto',         '~> 1.2.0'
+  gem 'rails-assets-autosize',      '~> 4.0.0'
+end

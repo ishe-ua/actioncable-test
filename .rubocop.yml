@@ -50,5 +50,5 @@ OrderedGems:
 Rails/LexicallyScopedActionFilter:
   Enabled: false
 
-Style/Documentation:
+Documentation:
   Enabled: false
