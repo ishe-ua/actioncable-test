@@ -1,9 +1,23 @@
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+Dir[
+  Rails.root.join('test', 'support', '**', '*.rb'),
+  Rails.root.join('test', '**', 'shared', '**', '*.rb')
+].each { |f| require f }
 
-  # Add more helper methods to be used by all tests here...
+# For mock and stub
+require 'minitest/autorun'
+
+class ActiveSupport::TestCase
+  attr_reader :instance, :modul, :klass, :mailer, :job
+  delegate :class, to: :instance, prefix: true
+
+  fixtures :all
+  include ActiveRecord::Tasks::DatabaseTasks # for fixtures_path
+end
+
+class ActionDispatch::IntegrationTest
+  include ActionMailer::TestHelper
+  include ActiveJob::TestHelper
 end
