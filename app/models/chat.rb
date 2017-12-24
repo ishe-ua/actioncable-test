@@ -28,6 +28,6 @@ class Chat < ApplicationRecord
             date: connection.quoted_date(Time.zone.now) }
 
     query = "select say(#{a_id}, #{b_id}, #{connection.quote msg.to_s});"
-    connection.execute(query)
+    connection.execute(query) # See db/sql
   end
 end
