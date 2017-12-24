@@ -2,7 +2,7 @@
 
 class CreateFuncSay < ActiveRecord::Migration[5.1]
   def up
-    exec_sql('say')
+    exec_sql('say') # See lib/utils
   end
 
   def down

@@ -22,4 +22,8 @@ end
 class ActionDispatch::IntegrationTest
   include ActionMailer::TestHelper
   include ActiveJob::TestHelper
+
+  def sign_in(name = 'me')
+    post sessions_path, params: { name: name }
+  end
 end

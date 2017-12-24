@@ -1,2 +1,2 @@
 --
-DROP FUNCTION say(integer, integer, text);
+DROP FUNCTION say(integer, integer, varchar);
