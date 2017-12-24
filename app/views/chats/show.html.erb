@@ -1,2 +1,8 @@
-<h1>Chats#show</h1>
-<p>Find me in app/views/chats/show.html.erb</p>
+<h2>to <%= @whom.name %></h2>
+
+<%= form_with do |f| %>
+  <%= f.text_field :text, autofocus: true %>
+<% end %>
+
+<div class="log">
+</div>

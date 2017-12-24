@@ -8,7 +8,7 @@
     <div class="wrapper">
       <ul class="users">
         <% User.all.each do |user| %>
-          <li id="<%= dom_id(user) %>"<%= link_to user.name %></li>
+          <li id="<%= dom_id(user) %>"><%= link_to user.name, chat_path(user) %></li>
         <% end %>
       </ul>
 

@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   resources :sessions, only: %i[new create]
-  resources :chats, only: %i[index show create]
+
+  get 'chats/index'
+  get 'chats/show/:user_id', to: 'chats#show', as: :chat
 end
