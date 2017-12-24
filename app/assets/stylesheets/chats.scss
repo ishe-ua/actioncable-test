@@ -1,3 +1,9 @@
-.chats {
+.chats.show {
 
+  form { margin-bottom: 2em; }
+
+  .msg { margin-bottom: 1em; }
+
+  .msg .who .name { font-weight: bold; }
+  .msg .who .date { font-size: small; }
 }

@@ -5,4 +5,7 @@
 <% end %>
 
 <div class="log">
+  <% 10.times do |msg| %> <%# todo %>
+    <%= render 'chats/msg', msg: msg %>
+  <% end %>
 </div>
