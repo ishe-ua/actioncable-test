@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head><%= render 'layouts/head' %></head>
+  <body id="chats" class="<%= controller_name %> <%= action_name %>">
+
+    <h1>Chats app:</h1>
+
+    <div class="wrapper">
+      <ul class="users">
+        <% User.all.each do |user| %>
+          <li id="<%= dom_id(user) %>"<%= link_to user.name %></li>
+        <% end %>
+      </ul>
+
+      <main class="chat">
+        <%= yield %>
+      </main>
+    </div>
+
+  </body>
+</html>

@@ -23,7 +23,8 @@ class Chat < ApplicationRecord
     a_id = [who_id, whom_id].min
     b_id = [who_id, whom_id].max
 
-    msg = { who: who_id, whom: whom_id,
+    msg = { who:  who_id,
+            whom: whom_id,
             text: connection.quote(text),
             date: connection.quoted_date(Time.zone.now) }
 

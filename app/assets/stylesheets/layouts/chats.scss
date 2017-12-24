@@ -1,0 +1,15 @@
+#chats {
+
+  h1 {
+    margin-bottom: 3em;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-areas: "users chat";
+    grid-template-columns: 10em 1fr;
+
+    .users { padding-top: 1em; }
+  }
+}
