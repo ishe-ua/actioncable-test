@@ -20,6 +20,7 @@ def build(model_name, attributes = {}) # rubocop:disable AbcSize, MethodLength
   end
 
   correction.call('user')
+  correction.call('chat')
 
   ##
 
