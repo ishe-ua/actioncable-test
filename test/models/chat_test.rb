@@ -10,15 +10,17 @@ class ChatTest < ActiveSupport::TestCase
   include ValidateInstanceTest
   include ValidateFixturesTest
 
-  test 'say for exist chat' do
-    skip
+  test 'say' do
     assert instance.save
     chat = instance
 
     mary_id = chat.a_id
     john_id = chat.b_id
 
-    Chat.say(mary_id, john_id, 'test message')
-    assert_equal instance.log.size, 1
+    instance.class.say(mary_id, john_id, 'hello')
+    assert_equal instance.reload.log.size, 1
+
+    instance.class.say(john_id, mary_id, 'hi')
+    assert_equal instance.reload.log.size, 2
   end
 end

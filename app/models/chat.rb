@@ -23,7 +23,11 @@ class Chat < ApplicationRecord
     a_id = [who_id, whom_id].min
     b_id = [who_id, whom_id].max
 
-    msg = { who: who_id, whom: whom_id, text: text, date: Time.zone.now }
-    find_by_sql('select say(?, ?, ?)', a_id, b_id, msg)
+    msg = { who: who_id, whom: whom_id,
+            text: connection.quote(text),
+            date: connection.quoted_date(Time.zone.now) }
+
+    query = "select say(#{a_id}, #{b_id}, #{connection.quote msg.to_s});"
+    connection.execute(query)
   end
 end
