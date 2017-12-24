@@ -19,16 +19,25 @@ class Chat < ApplicationRecord
   include Pair
   include Log
 
-  def self.say(who_id, whom_id, text)
-    a_id = [who_id, whom_id].min
-    b_id = [who_id, whom_id].max
+  class << self
+    def find_for(user1, user2)
+      a_id = [user1.id, user2.id].min
+      b_id = [user1.id, user2.id].max
 
-    msg = { who:  who_id,
-            whom: whom_id,
-            text: connection.quote(text),
-            date: connection.quoted_date(Time.zone.now) }
+      find_or_create_by(a_id: a_id, b_id: b_id)
+    end
 
-    query = "select say(#{a_id}, #{b_id}, #{connection.quote msg.to_s});"
-    connection.execute(query) # See db/sql
+    def say(who_id, whom_id, text)
+      a_id = [who_id, whom_id].min
+      b_id = [who_id, whom_id].max
+
+      msg = { who:  who_id,
+              whom: whom_id,
+              text: connection.quote(text),
+              date: connection.quoted_date(Time.zone.now) }
+
+      query = "select say(#{a_id}, #{b_id}, #{connection.quote msg.to_s})"
+      connection.execute(query) # See db/sql
+    end
   end
 end
