@@ -3,15 +3,17 @@
 require 'test_helper'
 
 class ChatsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    sign_in
+  end
+
   test 'should get index' do
-    skip
+    get chats_path
+    assert_response :success
   end
 
   test 'should get show' do
-    skip
-  end
-
-  test 'should get create' do
-    skip
+    get chat_path(users(:mary))
+    assert_response :success
   end
 end
