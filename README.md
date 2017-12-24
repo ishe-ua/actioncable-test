@@ -1,24 +1,12 @@
-# README
+# Simple chat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The simplest chat is an application on Rails5, PostgreSQL, which
+allows to send messages between two users. Implement it using
+Web-sockets. One of important requirements is persistence of
+conversation, so when a user starts a conversation, we need to store
+user's message in the database. You can keep front-end part simple to
+save your time.
 
-Things you may want to cover:
+## Tasks and utils
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* __bin/doc__ Generate app documentation
