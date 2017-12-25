@@ -38,13 +38,13 @@ BEGIN
 
         SELECT id INTO chat_id FROM chats WHERE a_id=$1 AND b_id=$2;
 
-        IF chat_id = NULL THEN
+        IF chat_id > 0 THEN
 
-           INSERT INTO chats (a_id, b_id, log, created_at, updated_at) VALUES ($1, $2, array[$3], now(), now());
+           UPDATE chats SET log=array_append(log, $3::text), updated_at=now() WHERE id=chat_id;
 
         ELSE
 
-           UPDATE chats SET log=array_append(log, $3::text), updated_at=now() WHERE id=chat_id;
+           INSERT INTO chats (a_id, b_id, log, created_at, updated_at) VALUES ($1, $2, array[$3], now(), now());
 
         END IF;
 

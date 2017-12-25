@@ -24,7 +24,7 @@ class Chat < ApplicationRecord
       a_id = [user1.id, user2.id].min
       b_id = [user1.id, user2.id].max
 
-      find_or_create_by(a_id: a_id, b_id: b_id)
+      find_by(a_id: a_id, b_id: b_id)
     end
 
     def say(who_id, whom_id, text)
