@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get 'chats/index', as: :chats
   get 'chats/show/:user_id', to: 'chats#show', as: :chat
+
+  mount ActionCable.server => '/cable'
 end
