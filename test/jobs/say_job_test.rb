@@ -8,10 +8,7 @@ class SayJobTest < ActiveJob::TestCase
   end
 
   test 'say' do
-    skip
-    mary = users(:mary)
-    john = users(:john)
-
-    assert job.perform_now(mary.id, john.id, 'test')
+    chat_pair = Chat.key_pair(10, 20).join('_')
+    assert job.perform_now(chat_pair, 'test')
   end
 end

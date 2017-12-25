@@ -5,18 +5,18 @@ class SayJob < ApplicationJob
   queue_as :default
 
   # See Chat#say
-  def perform(from_chat, text)
-    who_id, whom_id = from_chat.split('_')
+  def perform(chat_pair, text)
+    who_id, whom_id = chat_pair.split('_').map(&:to_i)
 
-    Chat.say(who_id, whom_id, text) &&
-      ActionCable.server.broadcast(from_chat,
-                                   msg: render_message(from_chat, text))
+    msg = Chat.say(who_id, whom_id, text)
+    ActionCable.server.broadcast(chat_pair, msg: render_message(msg)) if msg
+
+    msg # for test
   end
 
   protected
 
-  def render_message(_from_chat, _text)
-    ApplicationController.renderer.render(partial: 'chats/msg',
-                                          locals: { msg: msg }) # TODO
+  def render_message(msg)
+    ApplicationController.renderer.render(partial: 'chats/msg', msg: msg)
   end
 end
