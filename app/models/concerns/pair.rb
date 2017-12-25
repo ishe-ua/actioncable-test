@@ -25,11 +25,6 @@ module Pair
 
       [a_id, b_id]
     end
-
-    def str_key_pair(user1, user2)
-      a_id, b_id = key_pair(user1, user2)
-      "#{a_id}_#{b_id}"
-    end
   end
 
   protected

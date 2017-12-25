@@ -2,10 +2,21 @@
 
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "chat_#{params[:room]}"
+    stream_from params[:chat]
   end
 
-  def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+  def unsubscribed; end
+
+  # See SayJob, channels/chat.coffee
+  def say(chat_pair, text)
+    return if chat_pair.blank? || text.blank?
+
+    method = if Rails.env.development? || Rails.env.test?
+               :perform_now
+             else
+               :perform_later
+             end
+
+    SayJob.send(method, chat_pair, text.strip)
   end
 end

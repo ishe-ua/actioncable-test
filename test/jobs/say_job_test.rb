@@ -8,6 +8,7 @@ class SayJobTest < ActiveJob::TestCase
   end
 
   test 'say' do
+    skip
     mary = users(:mary)
     john = users(:john)
 
