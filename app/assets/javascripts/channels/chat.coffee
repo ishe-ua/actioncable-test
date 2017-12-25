@@ -1,7 +1,7 @@
 $(document).on 'turbolinks:load', ->
   return unless current_page('.chats.show')
 
-  App.chat = App.cable.subscriptions.create "ChatChannel", chat: $('form').data('chat-id'),
+  App.chat = App.cable.subscriptions.create channel: "ChatChannel", chat: $('form').data('chat-id'),
     connected: ->
       # Called when the subscription is ready for use on the server
 
@@ -9,7 +9,6 @@ $(document).on 'turbolinks:load', ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
-      console.log 'aa' # todo
       $('.log').prepend(data.msg)
 
   $('form').on 'submit', (e) ->

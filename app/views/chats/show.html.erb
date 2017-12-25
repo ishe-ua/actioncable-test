@@ -1,11 +1,11 @@
-<h2>to <%= @whom.name %></h2>
+<h2><%= current_user.name %> to <%= @whom.name %></h2>
 
 <%= form_with data: {chat_id: Chat.str_key_pair(current_user, @whom) } do |f| %>
   <%= f.text_field :text, autofocus: true, class: :text %>
 <% end %>
 
 <div class="log">
-  <% Chat.find_for(current_user, @whom)&.log&.reverse.each do |msg| %>
+  <% Chat.find_for(current_user, @whom)&.log&.reverse&.each do |msg| %>
     <%= render 'chats/msg', msg: instance_eval(msg) %>
   <% end %>
 </div>
