@@ -1,9 +1,12 @@
-App.chat = App.cable.subscriptions.create "ChatChannel",
-  connected: ->
-    # Called when the subscription is ready for use on the server
+$(document).on 'turbolinks:load', ->
+  return unless current_page('.chats.show')
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
+  App.chat = App.cable.subscriptions.create "ChatChannel", room: $('form').data('chat-id'),
+    connected: ->
+      # Called when the subscription is ready for use on the server
 
-  received: (data) ->
-    # Called when there's incoming data on the websocket for this channel
+    disconnected: ->
+      # Called when the subscription has been terminated by the server
+
+    received: (data) ->
+      # Called when there's incoming data on the websocket for this channel
