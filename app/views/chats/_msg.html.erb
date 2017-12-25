@@ -1,12 +1,12 @@
 <div class="msg">
 
   <div class="who">
-    <span class="name">mary</span>
-    <sub class="date">12.10.2017</sub>
+    <span class="name"><%= User.find_by(id: msg[:who])&.name || 'none' %></span>
+    <sub class="date"><%= msg[:date] %></sub>
   </div>
 
   <div class="text">
-    fgsdfgsdf sdfg sdfg sdfg sdfg sdfg s
+    <%= msg[:text] %>
   </div>
 
 </div>

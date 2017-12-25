@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="log">
-  <% 10.times do |msg| %> <%# todo %>
-    <%= render 'chats/msg', msg: msg %>
+  <% Chat.find_for(current_user, @whom)&.log&.each do |msg| %>
+    <%= render 'chats/msg', msg: JSON.parse(msg) %>
   <% end %>
 </div>

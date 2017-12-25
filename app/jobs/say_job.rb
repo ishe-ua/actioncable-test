@@ -9,14 +9,19 @@ class SayJob < ApplicationJob
     who_id, whom_id = chat_pair.split('_').map(&:to_i)
 
     msg = Chat.say(who_id, whom_id, text)
-    ActionCable.server.broadcast(chat_pair, msg: render_message(msg)) if msg
+    broadcast_to(chat_pair, msg) if msg
 
     msg # for test
   end
 
   protected
 
+  def broadcast_to(chat_pair, msg)
+    ActionCable.server.broadcast(chat_pair, msg: render_message(msg))
+  end
+
   def render_message(msg)
-    ApplicationController.renderer.render(partial: 'chats/msg', msg: msg)
+    ApplicationController.renderer
+                         .render(partial: 'chats/msg', locals: { msg: msg })
   end
 end

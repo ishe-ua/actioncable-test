@@ -10,3 +10,6 @@ $(document).on 'turbolinks:load', ->
 
     received: (data) ->
       $('.log').prepend(data.msg)
+
+    say: (text) ->
+      @perform(chat_pair, text)
