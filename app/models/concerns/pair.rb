@@ -13,6 +13,25 @@ module Pair
     validate :a_less_then_b
   end
 
+  class_methods do
+    def key_pair(user1, user2)
+      if user1.is_a?(Integer) && user2.is_a?(Integer)
+        a_id = [user1, user2].min
+        b_id = [user1, user2].max
+      else
+        a_id = [user1.id, user2.id].min
+        b_id = [user1.id, user2.id].max
+      end
+
+      [a_id, b_id]
+    end
+
+    def str_key_pair(user1, user2)
+      a_id, b_id = key_pair(user1, user2)
+      "#{a_id}_#{b_id}"
+    end
+  end
+
   protected
 
   def a_less_then_b

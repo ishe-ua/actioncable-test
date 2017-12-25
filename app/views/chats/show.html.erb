@@ -1,6 +1,6 @@
 <h2>to <%= @whom.name %></h2>
 
-<%= form_with do |f| %>
+<%= form_with data: {chat_id: Chat.str_key_pair(current_user, @whom) } do |f| %>
   <%= f.text_field :text, autofocus: true %>
 <% end %>
 
