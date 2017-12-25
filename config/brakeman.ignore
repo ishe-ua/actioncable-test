@@ -1,0 +1,45 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dangerous Eval",
+      "warning_code": 13,
+      "fingerprint": "11c3fb817af20c2646663e02a02405d98131ef294b40a235b455affb534ea92a",
+      "check_name": "Evaluation",
+      "message": "User input in eval",
+      "file": "app/views/chats/show.html.erb",
+      "line": 9,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_eval/",
+      "code": "instance_eval((Unresolved Model).new)",
+      "render_path": [{"type":"controller","class":"ChatsController","method":"show","line":11,"file":"app/controllers/chats_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "chats/show"
+      },
+      "user_input": "(Unresolved Model).new",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "309d7fa6e8c961761a9a444b56a8704f89fca91b314cee09735e530cdcc58e48",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/chat.rb",
+      "line": 37,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "connection.execute(\"select say(#{a_id}, #{b_id}, #{connection.quote({ :who => who_id, :whom => whom_id, :text => connection.quote(text), :date => connection.quoted_date(Time.zone.now) }.to_s)})\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Chat",
+        "method": "say"
+      },
+      "user_input": "a_id",
+      "confidence": "Medium",
+      "note": ""
+    }
+  ],
+  "updated": "2017-12-25 22:27:42 +0200",
+  "brakeman_version": "4.1.1"
+}
