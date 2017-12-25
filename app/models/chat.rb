@@ -20,16 +20,25 @@ class Chat < ApplicationRecord
   include Log
 
   class << self
-    def find_for(user1, user2)
-      a_id = [user1.id, user2.id].min
-      b_id = [user1.id, user2.id].max
+    def key_for(user1, user2)
+      if user1.is_a?(Integer) && user2.is_a?(Integer)
+        a_id = [user1, user2].min
+        b_id = [user1, user2].max
+      else
+        a_id = [user1.id, user2.id].min
+        b_id = [user1.id, user2.id].max
+      end
 
+      [a_id, b_id]
+    end
+
+    def find_for(user1, user2)
+      a_id, b_id = key_for(user1, user2)
       find_by(a_id: a_id, b_id: b_id)
     end
 
     def say(who_id, whom_id, text)
-      a_id = [who_id, whom_id].min
-      b_id = [who_id, whom_id].max
+      a_id, b_id = key_for(who_id, whom_id)
 
       msg = { who:  who_id,
               whom: whom_id,

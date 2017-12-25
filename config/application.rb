@@ -26,8 +26,7 @@ module ActioncableTest
 
     # Skip generation (bin/rails g ...)
     config.generators do |g|
-      g.assets false # stylesheets, js
-      g.helper false # helpers
+      g.helper false
     end
 
     # See db/sql folder
