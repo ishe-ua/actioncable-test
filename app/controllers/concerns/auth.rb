@@ -5,6 +5,9 @@ module Auth
 
   included do
     before_action :auth
+
+    helper_method :current_user
+    helper_method :signed_in?
   end
 
   def current_user
