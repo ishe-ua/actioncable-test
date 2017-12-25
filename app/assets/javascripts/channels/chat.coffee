@@ -9,6 +9,7 @@ $(document).on 'turbolinks:load', ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
+      console.log 'aa' # todo
       $('.log').prepend(data.msg)
 
   $('form').on 'submit', (e) ->

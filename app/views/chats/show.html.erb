@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="log">
-  <% Chat.find_for(current_user, @whom)&.log&.each do |msg| %>
-    <%= render 'chats/msg', msg: JSON.parse(msg) %>
+  <% Chat.find_for(current_user, @whom)&.log&.reverse.each do |msg| %>
+    <%= render 'chats/msg', msg: instance_eval(msg) %>
   <% end %>
 </div>
