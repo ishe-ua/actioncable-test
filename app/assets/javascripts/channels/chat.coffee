@@ -13,7 +13,12 @@ $(document).on 'turbolinks:load', ->
 
   $('form').on 'submit', (e) ->
     e.preventDefault()
+
+    chat_pair = $('form').data('chat-id')
     text = $('form .text').val().trim()
+
     if text
-      App.chat.send({ text: text })
+      App.chat.send({ chat_pair: chat_pair, text: text })
+      $('form .text').val('')
+
     false
