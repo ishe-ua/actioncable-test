@@ -1,7 +1,7 @@
 <h2>to <%= @whom.name %></h2>
 
-<%= form_with data: {chat_id: Chat.key_pair(current_user, @whom).join('_') } do |f| %>
-  <%= f.text_field :text, autofocus: true %>
+<%= form_with data: {chat_id: Chat.str_key_pair(current_user, @whom) } do |f| %>
+  <%= f.text_field :text, autofocus: true, class: :text %>
 <% end %>
 
 <div class="log">

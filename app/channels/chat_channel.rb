@@ -7,6 +7,10 @@ class ChatChannel < ApplicationCable::Channel
 
   def unsubscribed; end
 
+  def receive(data)
+    pp '---------------------'
+  end
+
   # See SayJob, channels/chat.coffee
   def say(chat_pair, text)
     return if chat_pair.blank? || text.blank?

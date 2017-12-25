@@ -25,6 +25,10 @@ module Pair
 
       [a_id, b_id]
     end
+
+    def str_key_pair(user1, user2)
+      key_pair(user1, user2).join('_')
+    end
   end
 
   protected
